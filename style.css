@@ -1,0 +1,373 @@
+:root {
+    /* Cores românticas */
+    --color-pink: #ff69b4;
+    --color-deep-pink: #ff1493;
+    --color-light-pink: #ffb6c1;
+    --color-soft-pink: #fff0f5;
+    --color-bg: #fff9fb;
+    --color-white: #fff;
+    --color-shadow: rgba(0, 0, 0, 0.1);
+    
+    /* Degradês */
+    --gradient-pink: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+    --gradient-card: linear-gradient(to bottom, #fff, #fff5f7);
+    
+    /* Sombras suaves */
+    --shadow-card: 0 15px 30px rgba(255, 105, 180, 0.2);
+    --shadow-button: 0 4px 15px rgba(255, 105, 180, 0.4);
+    --shadow-text: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Pacifico', cursive, 'Segoe UI', sans-serif;
+    background-color: var(--color-bg);
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: 
+      radial-gradient(circle at 10% 20%, var(--color-soft-pink) 0%, transparent 20%),
+      radial-gradient(circle at 90% 80%, var(--color-soft-pink) 0%, transparent 20%);
+    background-attachment: fixed;
+  }
+  
+  .flor {
+    position: absolute;
+    font-size: 1.8rem;
+    color: rgba(255, 182, 193, 0.7);
+    z-index: -1;
+    animation: float 8s infinite ease-in-out;
+    opacity: 0.8;
+    pointer-events: none;
+  }
+  
+  .flor:nth-child(1) {
+    top: 10%;
+    left: 5%;
+    animation-delay: 0s;
+    font-size: 2rem;
+  }
+
+  .flor:nth-child(2) {
+    top: 70%;
+    left: 10%;
+    animation-delay: 1s;
+    transform: rotate(45deg);
+  }
+  
+  .flor:nth-child(3) {
+    top: 30%;
+    right: 8%;
+    animation-delay: 2s;
+    font-size: 1.5rem;
+  }
+
+  .flor:nth-child(4) {
+    bottom: 15%;
+    right: 5%;
+    animation-delay: 3s;
+    transform: rotate(-20deg);
+  }
+  
+  .flor:nth-child(5) {
+    top: 20%;
+    left: 20%;
+    animation-delay: 4s;
+    font-size: 2.2rem;
+  }
+
+  .flor:nth-child(6) {
+    bottom: 25%;
+    right: 20%;
+    animation-delay: 5s;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-30px) rotate(15deg); }
+  }
+
+  .container {
+    max-width: min(90%, 800px);
+    width: 100%;
+    margin: 20px auto;
+    padding: 40px;
+    background-color: var(--color-white);
+    border-radius: 20px;
+    box-shadow: var(--shadow-card);
+    background-image: var(--gradient-card);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 182, 193, 0.3);
+  }
+  
+  .container::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: var(--gradient-pink);
+    z-index: -1;
+    border-radius: 30px;
+    opacity: 0.3;
+    filter: blur(15px);
+  }
+  
+  .mensagem {
+    font-size: clamp(1.2rem, 4vw, 1.4rem);
+    margin-bottom: 2.5rem;
+    color: var(--color-pink);
+    line-height: 1.8;
+    position: relative;
+  }
+  
+  .mensagem h1 {
+    font-size: clamp(2rem, 6vw, 3rem);
+    margin-bottom: 1.5rem;
+    color: var(--color-deep-pink);
+    text-shadow: var(--shadow-text);
+    background: linear-gradient(to right, #ff1493, #ff69b4);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+  }
+  
+  .mensagem p {
+    margin: 1.2rem 0;
+    animation: fadeIn 1.2s ease-in;
+    position: relative;
+    padding: 0 10px;
+  }
+  
+  .mensagem p::after {
+    content: "❦";
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--color-light-pink);
+    font-size: 1.2rem;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .slideshow-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4/3;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    margin: 2rem auto;
+    background: #000;
+    border: 3px solid var(--color-white);
+    transition: transform 0.3s ease;
+  }
+  
+  .slideshow-container:hover {
+    transform: translateY(-5px);
+  }
+  
+  .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: scale(1.05);
+    filter: brightness(0.95);
+  }
+  
+  .slide.active {
+    opacity: 1;
+    transform: scale(1);
+    filter: brightness(1);
+  }
+  
+  .slideshow-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1.5rem 0;
+    gap: 1.5rem;
+  }
+  
+  .slideshow-controls button {
+    background: var(--color-white);
+    border: none;
+    font-size: 1.8rem;
+    color: var(--color-pink);
+    cursor: pointer;
+    transition: all 0.4s ease;
+    padding: 0.8rem 1.8rem;
+    border-radius: 50%;
+    box-shadow: 0 3px 10px rgba(255, 105, 180, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .slideshow-controls button:hover {
+    transform: scale(1.15);
+    background-color: var(--color-pink);
+    color: var(--color-white);
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.5);
+  }
+  
+  .slideshow-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+    margin: 0 1rem;
+  }
+  
+  .dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: var(--color-light-pink);
+    cursor: pointer;
+    transition: all 0.4s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .dot.active {
+    background-color: var(--color-pink);
+    transform: scale(1.4);
+    box-shadow: 0 0 10px rgba(255, 105, 180, 0.7);
+  }
+  
+  .coracao {
+    font-size: 3.5rem;
+    color: var(--color-pink);
+    margin: 2.5rem 0;
+    animation: pulse 1.8s infinite ease-in-out;
+    text-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+    display: inline-block;
+    cursor: pointer;
+    transition: transform 0.3s;
+  }
+  
+  .coracao:hover {
+    animation: pulseFast 0.8s infinite ease-in-out;
+  }
+  
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+  }
+  
+  @keyframes pulseFast {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+  }
+  
+  #showSlideshow {
+    display: inline-block;
+    padding: 1rem 2.8rem;
+    font-size: 1.3rem;
+    font-family: 'Pacifico', cursive;
+    color: var(--color-white);
+    background: var(--gradient-pink);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: var(--shadow-button);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    margin: 2rem 0;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  #showSlideshow::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: 0.5s;
+  }
+  
+  #showSlideshow:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 10px 25px rgba(255, 105, 180, 0.6);
+  }
+  
+  #showSlideshow:hover::before {
+    left: 100%;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  /* Efeitos de flores decorativas */
+  .flor-decorativa {
+    position: absolute;
+    font-size: 1.5rem;
+    color: rgba(255, 182, 193, 0.6);
+    z-index: -1;
+    animation: float 6s infinite ease-in-out;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(10deg); }
+  }
+  
+  /* Responsivo */
+  @media (max-width: 768px) {
+    .container {
+      padding: 2rem 1.5rem;
+      border-radius: 15px;
+    }
+    
+    .slideshow-container {
+      aspect-ratio: 1/1;
+      border-radius: 15px;
+    }
+    
+    .slideshow-controls button {
+      padding: 0.6rem 1.5rem;
+      font-size: 1.5rem;
+    }
+    
+    #showSlideshow {
+      padding: 0.9rem 2.2rem;
+      font-size: 1.1rem;
+    }
+    
+    .mensagem p::after {
+      font-size: 1rem;
+    }
+    
+    .flor {
+    font-size: 1.2rem;
+  }
+}
+  
+  /* Adicionando flores decorativas via JavaScript */
+  /* Você precisará adicionar elementos <span class="flor-decorativa">🌸</span> */
+  /* em posições aleatórias ou usar JavaScript para isso */
