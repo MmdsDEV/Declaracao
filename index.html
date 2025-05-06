@@ -31,14 +31,14 @@
         
         <div class="slideshow-container hidden">
             <div class="slideshow">
-                <img class="slide" src="foto1.jpg" alt="Nossa foto 1">
-                <img class="slide" src="foto2.jpg" alt="Nossa foto 2">
-                <img class="slide" src="foto3.jpg" alt="Nossa foto 3">
-                <img class="slide" src="foto5.jpg" alt="Nossa foto 5">
-                <img class="slide" src="foto7.jpg" alt="Nossa foto 7">
-                <img class="slide" src="foto8.jpg" alt="Nossa foto 8">
-                <img class="slide" src="foto9.jpg" alt="Nossa foto 9">
-                <img class="slide" src="foto10.jpg" alt="Nossa foto 10">
+                <img class="slide" src="img/foto1.jpg" alt="Nossa foto 1">
+                <img class="slide" src="img/foto2.jpg" alt="Nossa foto 2">
+                <img class="slide" src="img/foto3.jpg" alt="Nossa foto 3">
+                <img class="slide" src="img/foto5.jpg" alt="Nossa foto 5">
+                <img class="slide" src="img/foto7.jpg" alt="Nossa foto 7">
+                <img class="slide" src="img/foto8.jpg" alt="Nossa foto 8">
+                <img class="slide" src="img/foto9.jpg" alt="Nossa foto 9">
+                <img class="slide" src="img/foto10.jpg" alt="Nossa foto 10">
             </div>
             <div class="slideshow-controls">
                 <button class="prev">❮</button>
@@ -46,11 +46,20 @@
                 <button class="next">❯</button>
             </div>
         </div>
-        <div class="mensagem">
-            <p>Desde 5 de março 2025</p>
-        </div>
+        
         <div class="coracao">
             <span>❤️</span>
+        </div>
+        <div class="music-player">
+            <audio id="loveSong" loop>
+                <!-- Adicione sua música aqui -->
+                <source src="D:\Sites.html\meu amor\music.mpeg" type="audio/mpeg">
+                Seu navegador não suporta o elemento de áudio.
+            </audio>
+            <button id="playButton">🎵 Tocar Música</button>
+            <div class="volume-control">
+                <input type="range" id="volumeSlider" min="0" max="1" step="0.1" value="0.7">
+            </div>
         </div>
     </div>
 
