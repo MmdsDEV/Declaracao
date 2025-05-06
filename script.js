@@ -110,3 +110,36 @@ document.addEventListener('DOMContentLoaded', function() {
         slideInterval = setInterval(nextSlide, slideDelay);
     }
 });
+// Player de música
+const playButton = document.getElementById('playButton');
+const loveSong = document.getElementById('loveSong');
+const volumeSlider = document.getElementById('volumeSlider');
+
+let isPlaying = false;
+
+playButton.addEventListener('click', function() {
+    if (isPlaying) {
+        loveSong.pause();
+        playButton.textContent = '🎵 Tocar Música';
+    } else {
+        loveSong.play();
+        playButton.textContent = '⏸️ Pausar Música';
+    }
+    isPlaying = !isPlaying;
+});
+
+volumeSlider.addEventListener('input', function() {
+    loveSong.volume = volumeSlider.value;
+});
+
+// Definir volume inicial
+loveSong.volume = volumeSlider.value;
+
+// Opcional: Adicionar animação quando a música está tocando
+loveSong.addEventListener('play', function() {
+    document.querySelector('.coracao').style.animation = 'pulseFast 0.8s infinite ease-in-out';
+});
+
+loveSong.addEventListener('pause', function() {
+    document.querySelector('.coracao').style.animation = 'pulse 1.8s infinite ease-in-out';
+});
